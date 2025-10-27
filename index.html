@@ -6,103 +6,107 @@
   <title>3-Day Workout Tracker</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
   <style>
+    body {
+      display: flex;
+      min-height: 100vh;
+    }
+    nav {
+      min-width: 200px;
+      background-color: #f1f1f1;
+      padding: 1rem;
+      border-right: 1px solid #ccc;
+    }
+    main {
+      flex: 1;
+      padding: 2rem;
+    }
     .video {
-      aspect-ratio: 16 / 9;
       width: 100%;
-      margin-bottom: 1rem;
+      aspect-ratio: 16 / 9;
     }
-    .section {
-      margin-bottom: 2rem;
-    }
-    .completed {
-      color: green;
-      font-weight: bold;
-    }
-    iframe {
-      border-radius: 8px;
-      margin: 0.5rem 0;
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <main class="container">
-    <h1>💪 3-Day Workout Tracker</h1>
+  <nav>
+    <h4>Workout Days</h4>
+    <ul>
+      <li><a href="#" onclick="showDay('day1')">Day 1: Push</a></li>
+      <li><a href="#" onclick="showDay('day2')">Day 2: Pull</a></li>
+      <li><a href="#" onclick="showDay('day3')">Day 3: Legs + Core</a></li>
+    </ul>
+  </nav>
+
+  <main>
     <label for="workoutDate">Workout Date</label>
-    <input type="date" id="workoutDate">
+    <input type="date" id="workoutDate" />
 
-    <details id="day1" open>
-      <summary><strong>Day 1: Push (Chest, Shoulders, Triceps)</strong></summary>
-      <div class="section">
-        <!-- Warm-up, main workout, cool-down omitted here for brevity (still included in live code) -->
-      </div>
-    </details>
+    <section id="day1">
+      <h2>Day 1: Push (Chest, Shoulders, Triceps)</h2>
+      <h4>🔥 Warm-up</h4>
+      <iframe class="video" src="https://www.youtube.com/embed/X3q5e1pV4pc" allowfullscreen></iframe>
+      <label><input type="checkbox"> Arm circles (30 sec)</label><br>
+      <label><input type="checkbox"> Jumping jacks (1 min)</label>
 
-    <details id="day2">
-      <summary><strong>Day 2: Pull (Back, Biceps)</strong></summary>
-      <div class="section">
-        <!-- Content as before -->
-      </div>
-    </details>
+      <h4>🏋️ Main Workout</h4>
+      <label><input type="checkbox"> Smith Machine Bench Press – 5x5</label><br>
+      <label><input type="checkbox"> Dumbbell Shoulder Press – 3x8</label><br>
+      <label><input type="checkbox"> Dumbbell Lateral Raises – 3x12</label><br>
+      <label><input type="checkbox"> Tricep Kickbacks – 3x12</label>
 
-    <details id="day3">
-      <summary><strong>Day 3: Legs + Core + MetCon</strong></summary>
-      <div class="section">
-        <!-- Content as before -->
-      </div>
-    </details>
+      <h4>🧘 Cool-down</h4>
+      <iframe class="video" src="https://www.youtube.com/embed/WEMhM3fRRFY" allowfullscreen></iframe>
+      <label><input type="checkbox"> Shoulder stretch</label><br>
+      <label><input type="checkbox"> Chest opener</label>
+    </section>
 
-    <button onclick="saveProgress()">✅ Mark Today as Completed</button>
-    <p id="status"></p>
-    <button onclick="resetProgress()" style="margin-top: 1rem;">🧹 Reset All Progress</button>
+    <section id="day2" class="hidden">
+      <h2>Day 2: Pull (Back, Biceps)</h2>
+      <h4>🔥 Warm-up</h4>
+      <iframe class="video" src="https://www.youtube.com/embed/6JQZ9xQZCnE" allowfullscreen></iframe>
+      <label><input type="checkbox"> Arm swings</label><br>
+      <label><input type="checkbox"> High knees</label>
+
+      <h4>🏋️ Main Workout</h4>
+      <label><input type="checkbox"> Smith Machine Bent-over Row – 5x5</label><br>
+      <label><input type="checkbox"> Dumbbell Curl – 3x10</label><br>
+      <label><input type="checkbox"> Kettlebell Swings – 3x15</label><br>
+      <label><input type="checkbox"> Hammer Curl – 3x12</label>
+
+      <h4>🧘 Cool-down</h4>
+      <iframe class="video" src="https://www.youtube.com/embed/Qp5HhXxXHOg" allowfullscreen></iframe>
+      <label><input type="checkbox"> Lat stretch</label><br>
+      <label><input type="checkbox"> Forward fold</label>
+    </section>
+
+    <section id="day3" class="hidden">
+      <h2>Day 3: Legs + Core + MetCon</h2>
+      <h4>🔥 Warm-up</h4>
+      <iframe class="video" src="https://www.youtube.com/embed/Q_gF3yz7sWI" allowfullscreen></iframe>
+      <label><input type="checkbox"> Bodyweight squats</label><br>
+      <label><input type="checkbox"> Hip openers</label>
+
+      <h4>🏋️ Main Workout</h4>
+      <label><input type="checkbox"> Smith Machine Squats – 5x5</label><br>
+      <label><input type="checkbox"> Dumbbell Lunges – 3x10/leg</label><br>
+      <label><input type="checkbox"> Kettlebell Russian Twists – 3x20</label><br>
+      <label><input type="checkbox"> Dumbbell Deadlifts – 3x8</label>
+
+      <h4>🧘 Cool-down</h4>
+      <iframe class="video" src="https://www.youtube.com/embed/v7AYKMP6rOE" allowfullscreen></iframe>
+      <label><input type="checkbox"> Quad stretch</label><br>
+      <label><input type="checkbox"> Forward fold</label>
+    </section>
   </main>
 
   <script>
-    function saveProgress() {
-      const date = document.getElementById('workoutDate').value;
-      if (!date) {
-        alert('Please select a workout date.');
-        return;
-      }
-      const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"]'));
-      const progress = checkboxes.map(cb => cb.checked);
-      localStorage.setItem('lastWorkoutDate', date);
-      localStorage.setItem(`progress-${date}`, JSON.stringify(progress));
-      document.getElementById('status').innerText = `✅ Workout completed on ${date}`;
-
-      autoAdvanceWorkout();
-    }
-
-    function resetProgress() {
-      const date = document.getElementById('workoutDate').value;
-      if (date) localStorage.removeItem(`progress-${date}`);
-      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-      document.getElementById('status').innerText = '';
-    }
-
-    function autoAdvanceWorkout() {
-      const allDays = ['day1', 'day2', 'day3'];
-      for (let i = 0; i < allDays.length; i++) {
-        const el = document.getElementById(allDays[i]);
-        if (el.open) {
-          el.open = false;
-          const next = document.getElementById(allDays[i + 1]);
-          if (next) next.open = true;
-          break;
-        }
-      }
-    }
-
-    window.onload = function () {
-      const savedDate = localStorage.getItem('lastWorkoutDate');
-      if (savedDate) {
-        document.getElementById('workoutDate').value = savedDate;
-        const savedProgress = JSON.parse(localStorage.getItem(`progress-${savedDate}`));
-        const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"]'));
-        if (savedProgress && checkboxes.length === savedProgress.length) {
-          checkboxes.forEach((cb, i) => cb.checked = savedProgress[i]);
-        }
-        document.getElementById('status').innerText = `✅ Last workout recorded on ${savedDate}`;
-      }
+    function showDay(dayId) {
+      ['day1', 'day2', 'day3'].forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+      });
+      document.getElementById(dayId).classList.remove('hidden');
     }
   </script>
 </body>
