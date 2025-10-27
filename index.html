@@ -29,63 +29,49 @@
     <details open>
       <summary><strong>Day 1: Push (Chest, Shoulders, Triceps)</strong></summary>
       <div class="section">
+        <strong>Warm-up</strong><br>
+        <label><input type="checkbox"> Arm Circles – <a href="https://www.youtube.com/watch?v=J20kmqY28KI" target="_blank">video</a></label><br>
+        <label><input type="checkbox"> Cat-Cow – <a href="https://www.youtube.com/watch?v=wG6gC-LY1xI" target="_blank">video</a></label><br>
+        <label><input type="checkbox"> Push-up to Downward Dog – <a href="https://www.youtube.com/watch?v=3sKHzCkDMLg" target="_blank">video</a></label>
+        <hr>
+        <strong>Main Workout</strong><br>
         <label><input type="checkbox"> Smith Machine Bench Press – <a href="https://www.youtube.com/watch?v=eO2I0fA7p_M" target="_blank">video</a></label><br>
         <label><input type="checkbox"> Smith Machine Incline Press – <a href="https://www.youtube.com/watch?v=RJFq2Wmadb0" target="_blank">video</a></label><br>
         <label><input type="checkbox"> Dumbbell Shoulder Press – <a href="https://www.youtube.com/watch?v=B-aVuyhvLHU" target="_blank">video</a></label><br>
         <label><input type="checkbox"> Overhead Triceps Extension – <a href="https://www.youtube.com/watch?v=_gsUck-7M74" target="_blank">video</a></label>
+        <hr>
+        <strong>Cool-down</strong><br>
+        <label><input type="checkbox"> Chest Opener Stretch – <a href="https://www.youtube.com/watch?v=KpT5c8G2-nQ" target="_blank">video</a></label><br>
+        <label><input type="checkbox"> Overhead Triceps Stretch – <a href="https://www.youtube.com/watch?v=ol2Jmjcb7ig" target="_blank">video</a></label><br>
+        <label><input type="checkbox"> Shoulder Stretch – <a href="https://www.youtube.com/watch?v=5xB_JCgVGUE" target="_blank">video</a></label>
       </div>
     </details>
 
     <details>
       <summary><strong>Day 2: Pull (Back, Biceps)</strong></summary>
       <div class="section">
+        <strong>Warm-up</strong><br>
+        <label><input type="checkbox"> Wall Slides – <a href="https://www.youtube.com/watch?v=6nB4a2iIUnE" target="_blank">video</a></label><br>
+        <label><input type="checkbox"> Dumbbell Shrug (light) – <a href="https://www.youtube.com/watch?v=VmB1G1K7v94" target="_blank">video</a></label><br>
+        <label><input type="checkbox"> Child’s Pose with Reach – <a href="https://www.youtube.com/watch?v=QIyKZf0KU3A" target="_blank">video</a></label>
+        <hr>
+        <strong>Main Workout</strong><br>
         <label><input type="checkbox"> Bent Over Barbell Row – <a href="https://www.youtube.com/watch?v=vT2GjY_Umpw" target="_blank">video</a></label><br>
         <label><input type="checkbox"> Dumbbell Biceps Curl – <a href="https://www.youtube.com/watch?v=ykJmrZ5v0Oo" target="_blank">video</a></label><br>
         <label><input type="checkbox"> Hammer Curl – <a href="https://www.youtube.com/watch?v=zC3nLlEvin4" target="_blank">video</a></label><br>
         <label><input type="checkbox"> Rear Delt Fly – <a href="https://www.youtube.com/watch?v=pDTHS8Pp7sY" target="_blank">video</a></label>
+        <hr>
+        <strong>Cool-down</strong><br>
+        <label><input type="checkbox"> Thread-the-Needle Stretch – <a href="https://www.youtube.com/watch?v=Jxumh5aGqPQ" target="_blank">video</a></label><br>
+        <label><input type="checkbox"> Neck Rolls – <a href="https://www.youtube.com/watch?v=KdfK_pqWJUo" target="_blank">video</a></label><br>
+        <label><input type="checkbox"> Wrist and Forearm Stretch – <a href="https://www.youtube.com/watch?v=TKFPfFiLIlA" target="_blank">video</a></label>
       </div>
     </details>
 
     <details>
       <summary><strong>Day 3: Legs + Core + MetCon</strong></summary>
       <div class="section">
-        <label><input type="checkbox"> Smith Machine Lunges – <a href="https://www.youtube.com/watch?v=vD7cJ4lL1Bw" target="_blank">video</a></label><br>
-        <label><input type="checkbox"> Goblet Squat (Kettlebell) – <a href="https://www.youtube.com/watch?v=6xwGFn-J_QA" target="_blank">video</a></label><br>
-        <label><input type="checkbox"> Kettlebell Swing – <a href="https://www.youtube.com/watch?v=YSxan4xM4qk" target="_blank">video</a></label><br>
-        <label><input type="checkbox"> Kettlebell Clean to Upright Row – <a href="https://www.youtube.com/watch?v=Qqk44NqAR3Q" target="_blank">video</a></label>
-      </div>
-    </details>
-
-    <button onclick="saveProgress()">✅ Mark Today as Completed</button>
-    <p id="status"></p>
-    <button onclick="resetProgress()" style="margin-top: 1rem;">🧹 Reset All Progress</button>
-  </main>
-
-  <script>
-    function saveProgress() {
-      const date = document.getElementById('workoutDate').value;
-      if (!date) {
-        alert('Please select a workout date.');
-        return;
-      }
-      localStorage.setItem('lastWorkoutDate', date);
-      document.getElementById('status').innerText = `✅ Workout completed on ${date}`;
-    }
-
-    function resetProgress() {
-      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-      localStorage.removeItem('lastWorkoutDate');
-      document.getElementById('status').innerText = '';
-    }
-
-    // Load saved date
-    window.onload = function () {
-      const savedDate = localStorage.getItem('lastWorkoutDate');
-      if (savedDate) {
-        document.getElementById('workoutDate').value = savedDate;
-        document.getElementById('status').innerText = `✅ Last workout recorded on ${savedDate}`;
-      }
-    }
-  </script>
-</body>
-</html>
+        <strong>Warm-up</strong><br>
+        <label><input type="checkbox"> Bodyweight Squats – <a href="https://www.youtube.com/watch?v=aclHkVaku9U" target="_blank">video</a></label><br>
+        <label><input type="checkbox"> Hip Flexor Stretch – <a href="https://www.youtube.com/watch?v=7HGqc1_zOZ0" target="_blank">video</a></label><br>
+        <label><input type="checkbox"> Glute Bridge – <a href="https://www.youtube.com/watch?v=m2Zx-57cSok" target="
